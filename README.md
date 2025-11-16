@@ -1,4 +1,4 @@
-# FitTrack Pro
+# FitTrack Pro - Vanilla JS Edition
 
 A modern fitness tracking dashboard built with pure HTML, CSS, and JavaScript (ES6+).
 
@@ -20,20 +20,25 @@ A modern fitness tracking dashboard built with pure HTML, CSS, and JavaScript (E
 ## File Structure
 
 ```
-fitTrack/
-├── index.html          # Dashboard page
-├── activities.html     # Activity tracking page
-├── meals.html          # Meal planning page
-├── goals.html          # Goals and daily logs page
-├── insights.html       # Analytics & insights page
-├── styles.css          # Global styles
-├── storage.js          # Data management & localStorage
-├── dashboard.js        # Dashboard logic
-├── activities.js       # Activities page logic
-├── meals.js            # Meals page logic
-├── goals.js            # Goals page logic
-├── insights.js         # Insights page logic
-└── README.md           # This file
+fitTrackPro/
+├── index.html
+├── README.md
+├── css/
+│   └── styles.css
+├── js/
+│   ├── activities.js
+│   ├── dashboard.js
+│   ├── goals.js
+│   ├── insights.js
+│   ├── meals.js
+│   ├── overlays.js
+│   ├── storage.js
+│   └── theme.js
+└── pages/
+    ├── activities.html
+    ├── goals.html
+    ├── insights.html
+    └── meals.html
 ```
 
 ## Usage
@@ -80,4 +85,3 @@ Works in all modern browsers supporting:
 - ES6 JavaScript
 - CSS Grid & Flexbox
 - LocalStorage API
-- SVG
