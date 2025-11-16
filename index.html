@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Dashboard</title>
+    <meta name="description" content="Track your fitness goals, activities, meals, and wellness progress with FitTrack Pro">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitTrack Pro</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="pages/activities.html">Activities</a></li>
+                <li><a href="pages/meals.html">Meals</a></li>
+                <li><a href="pages/goals.html">Goals</a></li>
+                <li><a href="pages/insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="header-card">
+            <div class="clock-icon">🕐</div>
+            <div>
+                <p class="clock-label">Live Time</p>
+                <h2 class="live-time" id="liveTime">00:00:00</h2>
+                <p class="live-date" id="liveDate">Loading...</p>
+            </div>
+        </div>
+
+        <section class="wellness-section">
+            <h3 class="section-title">
+                <span class="icon">📈</span>
+                Today's Wellness Overview
+            </h3>
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <div class="progress-circle" id="stepsProgress">
+                        <svg width="200" height="200">
+                            <circle cx="100" cy="100" r="70" class="progress-bg"></circle>
+                            <circle cx="100" cy="100" r="70" class="progress-fill progress-primary" id="stepsCircle"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-value" id="stepsValue">0</span>
+                            <span class="progress-unit">steps</span>
+                        </div>
+                    </div>
+                    <p class="progress-label">Steps Taken</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-circle" id="caloriesProgress">
+                        <svg width="200" height="200">
+                            <circle cx="100" cy="100" r="70" class="progress-bg"></circle>
+                            <circle cx="100" cy="100" r="70" class="progress-fill progress-accent" id="caloriesCircle"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-value" id="caloriesValue">0</span>
+                            <span class="progress-unit">kcal</span>
+                        </div>
+                    </div>
+                    <p class="progress-label">Calories Burned</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-circle" id="waterProgress">
+                        <svg width="200" height="200">
+                            <circle cx="100" cy="100" r="70" class="progress-bg"></circle>
+                            <circle cx="100" cy="100" r="70" class="progress-fill progress-secondary" id="waterCircle"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-value" id="waterValue">0</span>
+                            <span class="progress-unit">glasses</span>
+                        </div>
+                    </div>
+                    <p class="progress-label">Water Intake</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <p class="stat-label">Step Goal</p>
+                <p class="stat-value" id="stepGoal">0%</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Calorie Goal</p>
+                <p class="stat-value" id="calorieGoal">0%</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Water Goal</p>
+                <p class="stat-value" id="waterGoal">0%</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">Overall</p>
+                <p class="stat-value stat-excellent">Excellent</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/overlays.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

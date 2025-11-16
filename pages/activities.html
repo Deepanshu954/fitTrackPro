@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Activities</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitTrack Pro</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="activities.html" class="active">Activities</a></li>
+                <li><a href="meals.html">Meals</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h1>Activity Tracker</h1>
+                <p class="page-subtitle">Log and track your daily workouts</p>
+            </div>
+            <button class="btn btn-primary" id="addActivityBtn">
+                <span class="icon">➕</span>
+                Add Activity
+            </button>
+        </div>
+
+        <div class="header-card">
+            <div class="icon">🔥</div>
+            <div>
+                <p class="clock-label">Total Calories Burned</p>
+                <h2 class="live-time" id="totalCalories">0</h2>
+                <p class="live-date">calories burned today</p>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Activities</button>
+            <button class="filter-tab" data-filter="morning">Morning</button>
+            <button class="filter-tab" data-filter="afternoon">Afternoon</button>
+            <button class="filter-tab" data-filter="evening">Evening</button>
+        </div>
+
+        <div id="activitiesList" class="activities-list"></div>
+    </main>
+
+    <!-- Custom Modal -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Activity</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityName">Activity Name *</label>
+                    <input type="text" id="activityName" placeholder="e.g., Morning Run" required>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (minutes) *</label>
+                    <input type="number" id="duration" placeholder="30" min="1" max="300" required>
+                    <span class="error-message" id="durationError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="calories">Calories Burned *</label>
+                    <input type="number" id="calories" placeholder="300" min="1" max="2000" required>
+                    <span class="error-message" id="caloriesError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="timeOfDay">Time of Day</label>
+                    <select id="timeOfDay">
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Add Activity</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/overlays.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/activities.js"></script>
+</body>
+</html>

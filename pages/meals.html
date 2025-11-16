@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Meals</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitTrack Pro</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="meals.html" class="active">Meals</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h1>Meal Planner</h1>
+                <p class="page-subtitle">Plan and track your daily nutrition</p>
+            </div>
+            <button class="btn btn-secondary" id="addMealBtn">
+                <span class="icon">➕</span>
+                Add Meal
+            </button>
+        </div>
+
+        <div class="header-card meal-header">
+            <div class="icon">🍽️</div>
+            <div>
+                <p class="clock-label">Total Daily Intake</p>
+                <h2 class="live-time" id="totalMealCalories">0</h2>
+                <p class="live-date">calories consumed today</p>
+            </div>
+        </div>
+
+        <div class="meals-sections">
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Breakfast</h3>
+                    <span class="meal-calories" id="breakfastCalories">0 kcal</span>
+                </div>
+                <div id="breakfastList" class="meal-items"></div>
+            </div>
+
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Lunch</h3>
+                    <span class="meal-calories" id="lunchCalories">0 kcal</span>
+                </div>
+                <div id="lunchList" class="meal-items"></div>
+            </div>
+
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Dinner</h3>
+                    <span class="meal-calories" id="dinnerCalories">0 kcal</span>
+                </div>
+                <div id="dinnerList" class="meal-items"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Modal -->
+    <div id="mealModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Meal</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="mealForm">
+                <div class="form-group">
+                    <label for="mealName">Meal Name *</label>
+                    <input type="text" id="mealName" placeholder="e.g., Grilled Chicken Salad" required>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mealCalories">Calories *</label>
+                    <input type="number" id="mealCalories" placeholder="450" min="1" max="3000" required>
+                    <span class="error-message" id="caloriesError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="mealType">Meal Type</label>
+                    <select id="mealType">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-full">Add Meal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/overlays.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/meals.js"></script>
+</body>
+</html>

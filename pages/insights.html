@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Insights</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitTrack Pro</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="meals.html">Meals</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="insights.html" class="active">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h1>Insights & Summary</h1>
+                <p class="page-subtitle">Your weekly progress overview</p>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" id="downloadBtn">
+                    <span class="icon">📥</span>
+                    Download
+                </button>
+                <button class="btn btn-danger" id="resetBtn">
+                    <span class="icon">🔄</span>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-grid insights-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <p class="stat-label">Total Activities</p>
+                <p class="stat-value" id="totalActivities">0</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <p class="stat-label">Calories Burned</p>
+                <p class="stat-value" id="totalCaloriesBurned">0</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🍽️</div>
+                <p class="stat-label">Total Meals</p>
+                <p class="stat-value" id="totalMeals">0</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <p class="stat-label">Calories Consumed</p>
+                <p class="stat-value" id="totalCaloriesConsumed">0</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Weekly Activities</h3>
+            <div class="chart" id="activityChart"></div>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Weekly Calories Burned</h3>
+            <div class="chart" id="calorieChart"></div>
+        </div>
+    </main>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/overlays.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/insights.js"></script>
+</body>
+</html>

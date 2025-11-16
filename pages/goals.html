@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Goals</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitTrack Pro</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="meals.html">Meals</a></li>
+                <li><a href="goals.html" class="active">Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h1>Goals & Daily Logs</h1>
+                <p class="page-subtitle">Set your targets and track daily progress</p>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" id="saveGoalsBtn">
+                    <span class="icon">💾</span>
+                    Save Goals
+                </button>
+                <button class="btn btn-secondary" id="syncBtn" title="Sync dashboard wellness with today's logs">
+                    <span class="icon">🔁</span>
+                    Sync to Dashboard
+                </button>
+            </div>
+        </div>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🏃</div>
+                <p class="stat-label">Steps Goal</p>
+                <p class="stat-value"><span id="stepsGoalValue">10,000</span></p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <p class="stat-label">Calories Goal</p>
+                <p class="stat-value"><span id="caloriesGoalValue">3,000</span></p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💧</div>
+                <p class="stat-label">Water Goal</p>
+                <p class="stat-value"><span id="waterGoalValue">8</span> glasses</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <p class="stat-label">Today</p>
+                <p class="stat-value" id="todayDate">-</p>
+            </div>
+        </section>
+
+        <section class="chart-container">
+            <h3 class="chart-title">Set Your Daily Goals</h3>
+            <form id="goalsForm">
+                <div class="form-group">
+                    <label for="stepsGoal">Steps (per day)</label>
+                    <input type="number" id="stepsGoal" min="1" step="100" placeholder="10000">
+                </div>
+                <div class="form-group">
+                    <label for="caloriesGoal">Calories Burned (per day)</label>
+                    <input type="number" id="caloriesGoal" min="1" step="50" placeholder="3000">
+                </div>
+                <div class="form-group">
+                    <label for="waterGoal">Water (glasses per day)</label>
+                    <input type="number" id="waterGoal" min="1" step="1" placeholder="8">
+                </div>
+            </form>
+        </section>
+
+        <h3 class="section-title"><span class="icon">📝</span>Today's Logs</h3>
+        <div class="meals-sections">
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Steps Taken</h3>
+                    <div class="button-group">
+                        <span class="meal-calories" id="stepsTotal">0 steps</span>
+                        <button class="btn btn-primary" id="addStepsBtn">➕ Add</button>
+                    </div>
+                </div>
+                <div id="stepsList" class="meal-items"></div>
+            </div>
+
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Calories Burned</h3>
+                    <div class="button-group">
+                        <span class="meal-calories" id="caloriesTotal">0 kcal</span>
+                        <button class="btn btn-primary" id="addCaloriesBtn">➕ Add</button>
+                    </div>
+                </div>
+                <div id="caloriesList" class="meal-items"></div>
+            </div>
+
+            <div class="meal-section">
+                <div class="meal-section-header">
+                    <h3>Water Intake</h3>
+                    <div class="button-group">
+                        <span class="meal-calories" id="waterTotal">0 glasses</span>
+                        <button class="btn btn-primary" id="addWaterBtn">➕ Add</button>
+                    </div>
+                </div>
+                <div id="waterList" class="meal-items"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Add/Edit Log -->
+    <div id="logModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="logModalTitle">Add Log</h2>
+                <button class="modal-close" id="closeLogModal">&times;</button>
+            </div>
+            <form id="logForm">
+                <input type="hidden" id="logId">
+                <div class="form-group">
+                    <label for="logType">Type</label>
+                    <select id="logType">
+                        <option value="steps">Steps</option>
+                        <option value="calories">Calories Burned</option>
+                        <option value="water">Water</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="logAmount">Amount</label>
+                    <input type="number" id="logAmount" min="1" step="1" required>
+                    <span class="error-message" id="amountError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="logNote">Note (optional)</label>
+                    <input type="text" id="logNote" placeholder="e.g., Afternoon walk">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="logSubmitBtn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/overlays.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/goals.js"></script>
+</body>
+</html>
