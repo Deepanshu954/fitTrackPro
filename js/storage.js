@@ -58,7 +58,48 @@ const DEFAULT_GOALS = {
     water: 8
 };
 
-const DEFAULT_LOGS = [];
+const DEFAULT_LOGS = [
+    {
+        id: 'l1',
+        type: 'steps',
+        amount: 3200,
+        note: 'Morning walk',
+        date: new Date().toISOString().split('T')[0],
+        time: '08:30 AM'
+    },
+    {
+        id: 'l2',
+        type: 'calories',
+        amount: 300,
+        note: 'AM run burn',
+        date: new Date().toISOString().split('T')[0],
+        time: '09:15 AM'
+    },
+    {
+        id: 'l3',
+        type: 'water',
+        amount: 2,
+        note: 'Hydration start',
+        date: new Date().toISOString().split('T')[0],
+        time: '10:00 AM'
+    },
+    {
+        id: 'l4',
+        type: 'steps',
+        amount: 2500,
+        note: 'Midday errands',
+        date: new Date().toISOString().split('T')[0],
+        time: '12:40 PM'
+    },
+    {
+        id: 'l5',
+        type: 'water',
+        amount: 1,
+        note: 'With lunch',
+        date: new Date().toISOString().split('T')[0],
+        time: '01:10 PM'
+    }
+];
 
 // Storage Functions
 function getActivities() {
@@ -184,13 +225,13 @@ function getLogs() {
     const stored = localStorage.getItem(STORAGE_KEYS.LOGS);
     if (!stored) {
         localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(DEFAULT_LOGS));
-        return [];
+        return DEFAULT_LOGS;
     }
     try {
         return JSON.parse(stored);
     } catch {
         localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(DEFAULT_LOGS));
-        return [];
+        return DEFAULT_LOGS;
     }
 }
 
