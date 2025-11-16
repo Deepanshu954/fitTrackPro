@@ -225,12 +225,26 @@ function getLogs() {
     const stored = localStorage.getItem(STORAGE_KEYS.LOGS);
     if (!stored) {
         localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(DEFAULT_LOGS));
+        // Mark seed date to avoid reseeding repeatedly within same day
+        localStorage.setItem('fittrack_logs_seeded', new Date().toISOString().split('T')[0]);
         return DEFAULT_LOGS;
     }
     try {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // If logs exist but are empty, seed once per day to ensure dashboard has defaults
+        if (Array.isArray(parsed) && parsed.length === 0) {
+            const today = new Date().toISOString().split('T')[0];
+            const seededOn = localStorage.getItem('fittrack_logs_seeded');
+            if (seededOn !== today) {
+                localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(DEFAULT_LOGS));
+                localStorage.setItem('fittrack_logs_seeded', today);
+                return DEFAULT_LOGS;
+            }
+        }
+        return parsed;
     } catch {
         localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(DEFAULT_LOGS));
+        localStorage.setItem('fittrack_logs_seeded', new Date().toISOString().split('T')[0]);
         return DEFAULT_LOGS;
     }
 }
