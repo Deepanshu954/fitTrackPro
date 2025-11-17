@@ -1,6 +1,8 @@
 # FitTrack Pro - Vanilla JS Edition
 
 A modern fitness tracking dashboard built with pure HTML, CSS, and JavaScript (ES6+).
+Live Preview → 
+## 🌐  [Live Demo](https://deepanshu954.github.io/fitTrackPro/)
 
 ## Features
 
